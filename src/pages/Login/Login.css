@@ -1,0 +1,93 @@
+.login{
+    min-height: 100vh;
+    background: url(/background.png) no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login .logo{
+    width: max(20vw,200px);
+}
+
+/* Updated CSS for the Sign-up Form */
+.login-form {
+    background: #f9f9f9; /* Light gray background for better contrast */
+    padding: 25px 35px; /* Increased padding for a more spacious look */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Reduced gap for compactness */
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form:hover {
+    transform: translateY(-5px); /* Subtle hover effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.login-form h2 {
+    font-weight: 600; /* Slightly bolder font for better visibility */
+    color: #333; /* Darker color for better readability */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form-input {
+    padding: 10px 12px; /* Enhanced padding for better usability */
+    border: 1px solid #d1d1d1; /* Lighter border color */
+    border-radius: 6px; /* Slightly rounded corners */
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #077eff; /* Highlighted border on focus */
+    box-shadow: 0 0 5px rgba(7, 126, 255, 0.5); /* Subtle glow effect */
+}
+
+.login-form button {
+    background-color: #077eff;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-form button:hover {
+    background-color: #005bb5; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.login-forgot {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start; /* Align forgot links to the left */
+    font-size: 14px;
+    color: #5c5c5c;
+}
+
+.login-toggle {
+    font-size: 13px;
+    color: #666; /* Neutral color */
+    text-align: center;
+}
+
+.login-toggle span {
+    font-weight: 500;
+    color: #077eff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.login-toggle span:hover {
+    color: #005bb5; /* Slightly darker on hover */
+}
