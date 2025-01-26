@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDApe1Hz7vRBmvjNCLz3Z_93aYUQYOdRxY",
@@ -19,6 +20,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app); // For user authentication
 const db = getFirestore(app); // For Firestore database
 
+//Signup function
 const signup = async (uersname,email, password) => {
   try{
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -35,10 +37,21 @@ const signup = async (uersname,email, password) => {
     await setDoc(doc(db, "chats", user.uid), {
       chatData: [],
   })
-  }  catch(error){
+  } catch (error) {
     console.error(error);
+    toast.error(error.code.split('/')[1].split('-').join(' ')); // Display the error message
+  }
+}
+
+//login function
+const login = async(email,password)=>{
+  try{
+    await signInWithEmailAndPassword(auth,email,password);
+  }catch(error){
+    console.error(error);
+    toast.error(error.code.split('/')[1].split('-').join(' ')); // Display the error message
   }
 }
 
 // Export the signup function
-export { signup };
+export { signup , login };
