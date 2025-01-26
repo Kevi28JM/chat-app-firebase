@@ -35,7 +35,7 @@ const signup = async (uersname,email, password) => {
       lastSeen:Date.now(),
     });
     await setDoc(doc(db, "chats", user.uid), {
-      chatData: [],
+      chatsData: [],
   })
   } catch (error) {
     console.error(error);
@@ -53,5 +53,14 @@ const login = async(email,password)=>{
   }
 }
 
+const logout = async()=>{
+  try{
+    await auth.signOut();
+  }catch(error){
+    console.error(error);
+    toast.error(error.code.split('/')[1].split('-').join(' ')); // Display the error message
+  }
+}
+
 // Export the signup function
-export { signup , login };
+export { signup, login, logout, auth, db };

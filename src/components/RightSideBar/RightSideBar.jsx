@@ -1,6 +1,11 @@
 import './RightSideBar.css'
 import assets from "../../assets/assets";
 
+const logout = () => {
+    // Add your logout logic here
+    console.log("Logged out");
+};
+
 const RightSideBar = ()=>{
     return(
         <div className="rs">
@@ -21,7 +26,7 @@ const RightSideBar = ()=>{
                 <img src={assets.pic2} alt="" />
             </div>
          </div>
-         <button>Logout</button>
+         <button onClick={()=>logout()}>Logout</button>
         </div>
     )
 }
