@@ -1,17 +1,44 @@
- // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, setDoc, doc } from "firebase/firestore";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDoNMIEH08P-1_D8IChBiZJcdlkUlIMstc",
-  authDomain: "chat-app-78f0f.firebaseapp.com",
-  projectId: "chat-app-78f0f",
-  storageBucket: "chat-app-78f0f.firebasestorage.app",
-  messagingSenderId: "778127871413",
-  appId: "1:778127871413:web:fecce97e9baba81194ddfc"
+  apiKey: "AIzaSyDApe1Hz7vRBmvjNCLz3Z_93aYUQYOdRxY",
+  authDomain: "cloud-chat-application-77b8f.firebaseapp.com",
+  projectId: "cloud-chat-application-77b8f",
+  storageBucket: "cloud-chat-application-77b8f.firebasestorage.app",
+  messagingSenderId: "875949770085",
+  appId: "1:875949770085:web:a160aa502ca11e4d6d0d8c",
+  measurementId: "G-ME27PBRQPX",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase services
+const auth = getAuth(app); // For user authentication
+const db = getFirestore(app); // For Firestore database
+
+const signup = async (uersname,email, password) => {
+  try{
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    await setDoc(doc(db, "users", user.uid), {
+      id: user.uid,
+      username: uersname.toLowerCase(),
+      email,
+      name: "",
+      avatar: "",
+      bio:"Hey there i am using chat app",
+      lastSeen:Date.now(),
+    });
+    await setDoc(doc(db, "chats", user.uid), {
+      chatData: [],
+  })
+  }  catch(error){
+    console.error(error);
+  }
+}
+
+// Export the signup function
+export { signup };
