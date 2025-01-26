@@ -1,4 +1,3 @@
-import React from "react";
 import './Chat.css'
 import ChatBox from "../../components/ChatBox/ChatBox";
 import LeftSideBar from "../../components/LeftSideBar/LeftSideBar";

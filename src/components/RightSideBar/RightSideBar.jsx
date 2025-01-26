@@ -1,4 +1,3 @@
-import React from "react";
 import './RightSideBar.css'
 import assets from "../../assets/assets";
 

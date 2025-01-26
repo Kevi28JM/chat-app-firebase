@@ -1,4 +1,3 @@
-import React from "react";
 import './LeftSideBar.css'
 import assets from "../../assets/assets";
 
@@ -23,8 +22,8 @@ const LeftSideBar = ()=>{
             </div>
           </div>
           <div className="ls-list">
-           {Array(12).fill("").map((item,index)=>(
-            <div className="friends">
+           {Array(12).fill("").map((_, index) => (
+            <div className="friends" key={index}>
                 <img src={assets.profile_img} alt="" />
                 <div>
                     <p>Richard Sanford</p>
