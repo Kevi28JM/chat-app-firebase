@@ -2,8 +2,9 @@ import { useState, useEffect, createContext } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { doc, getDoc, updateDoc, onSnapshot } from 'firebase/firestore';
-import { auth, db } from '../config/firebase';;
+import { auth, db } from '../config/firebase';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
@@ -11,6 +12,10 @@ const AppContextProvider = ({ children }) => {
     const navigate = useNavigate();
     const [userData, setUserData] = useState(null);
     const [chatData, setChatData] = useState(null);
+    const [messageId, setMessageId] = useState(null);
+    const [messages, setMessages] = useState([]);
+    const [chatUser, setChatUser] = useState(null);
+    const [chatVisible, setChatVisible] = useState(false);
 
     const loadUserData = async (uid) => {
         try {
@@ -57,14 +62,21 @@ const AppContextProvider = ({ children }) => {
             };
         }
     }, [userData]);
-        
 
     const value = {
         userData,
         setUserData,
         chatData,
         setChatData,
-        loadUserData
+        loadUserData,
+        messages,
+        setMessages,
+        messageId,
+        setMessageId,
+        chatUser,
+        setChatUser,
+        chatVisible,
+        setChatVisible
     }
 
     return (
