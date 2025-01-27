@@ -3,6 +3,9 @@ import ChatBox from "../../components/ChatBox/ChatBox";
 import LeftSideBar from "../../components/LeftSideBar/LeftSideBar";
 import RightSideBar from "../../components/RightSideBar/RightSideBar";
 import { useEffect } from 'react';
+import { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
+import { useState } from 'react';
 
 const Chat= ()=>{
 
