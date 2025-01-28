@@ -23,9 +23,9 @@ const db = getFirestore(app); // For Firestore database
 //Signup function
 const signup = async (username,email, password) => {
   try{
-    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const res = await createUserWithEmailAndPassword(auth, email, password); //create user in authentication
     const user = res.user;
-    await setDoc(doc(db, "users", user.uid), {
+    await setDoc(doc(db, "users", user.uid), { //save userdata in firestore
       id: user.uid,
       username: username.toLowerCase(),
       email,
@@ -34,7 +34,7 @@ const signup = async (username,email, password) => {
       bio:"Hey there i am using chat app",
       lastSeen:Date.now(),
     });
-    await setDoc(doc(db, "chats", user.uid), {
+    await setDoc(doc(db, "chats", user.uid), { // create chat instance with null array
       chatsData: [],
   })
   } catch (error) {

@@ -24,11 +24,32 @@ const Login = ()=>{
          <img src={assets.logo_big} alt=""className="logo"/>
          <form onSubmit={onSubmitHandler} className="login-form">
             <h2>{currState}</h2>
-            {currState === "Sign Up"?<input onChange = {(e)=>setUserName(e.target.value)} value = {userName} type="text"placeholder='Username' className="form-input" required/>:null}
-            <input onChange = {(e)=>setEmail(e.target.value)} value = {email}type="email"placeholder='Email address' className="form-input" required/>
-            <input onChange = {(e)=>setPassword(e.target.value)} value = {password}type="password"placeholder='Password' className="form-input" required/>
-            <button type="submit">{currState === "Sign Up"?"Sign Up":"Login"}</button>
-            <div className="login-forgot">
+            {currState === "Sign Up"?
+                <input onChange = {(e)=>setUserName(e.target.value)} 
+                    value = {userName} 
+                    type="text"
+                    placeholder='Username' 
+                    className="form-input" 
+                    required/>:null}
+                <input onChange = {(e)=>setEmail(e.target.value)} 
+                    value = {email}
+                    type="email"
+                    placeholder='Email address' 
+                    className="form-input" 
+                    required/>
+                <input onChange = {(e)=>setPassword(e.target.value)}
+                    value = {password}
+                    type="password"
+                    placeholder='Password' 
+                    className="form-input" 
+                    required/>
+                <button type="submit">
+                    {/* according to the state the button text changes */}
+                    {currState === "Sign Up" && "Sign Up"}
+                    {currState !== "Sign Up" && "Login"}
+                </button>
+
+                <div className="login-forgot">
 
             {
                 currState === "Sign Up"
