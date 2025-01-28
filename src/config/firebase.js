@@ -21,13 +21,13 @@ const auth = getAuth(app); // For user authentication
 const db = getFirestore(app); // For Firestore database
 
 //Signup function
-const signup = async (uersname,email, password) => {
+const signup = async (username,email, password) => {
   try{
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     await setDoc(doc(db, "users", user.uid), {
       id: user.uid,
-      username: uersname.toLowerCase(),
+      username: username.toLowerCase(),
       email,
       name: "",
       avatar: "",
